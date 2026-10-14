@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zyramic OneDrive Transfer Status</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f5f7fa; color: #1a1a2e; line-height: 1.6; padding: 24px 16px; }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  h1 { font-size: 1.6rem; margin-bottom: 4px; }
+  .sub { color: #666; margin-bottom: 24px; font-size: .95rem; }
+  .card { background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+  .card h2 { font-size: 1.1rem; margin-bottom: 12px; }
+  .bar-outer { background: #e8ecf1; border-radius: 8px; height: 22px; overflow: hidden; margin: 8px 0; }
+  .bar-inner { background: linear-gradient(90deg, #2563eb, #3b82f6); height: 100%; border-radius: 8px; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; color: #fff; font-size: .75rem; font-weight: 600; }
+  .file-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: .9rem; }
+  .file-row:last-child { border-bottom: none; }
+  .badge { font-size: .75rem; padding: 2px 10px; border-radius: 20px; font-weight: 600; }
+  .badge.done { background: #dcfce7; color: #166534; }
+  .badge.active { background: #dbeafe; color: #1d4ed8; }
+  .badge.wait { background: #f3f4f6; color: #6b7280; }
+  .meta { font-size: .8rem; color: #888; margin-top: 8px; }
+  label { display: block; font-weight: 600; margin: 12px 0 4px; font-size: .9rem; }
+  input, textarea { width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 8px; font-size: .95rem; font-family: inherit; }
+  textarea { min-height: 100px; resize: vertical; }
+  button { background: #2563eb; color: #fff; border: none; padding: 12px 24px; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; margin-top: 12px; }
+  button:hover { background: #1d4ed8; }
+  .faq-q { font-weight: 700; margin: 12px 0 4px; font-size: .95rem; }
+  .faq-a { font-size: .9rem; color: #444; margin-bottom: 8px; }
+  .faq-a code { background: #f3f4f6; padding: 2px 6px; border-radius: 4px; font-size: .85rem; }
+  .footer { text-align: center; color: #999; font-size: .8rem; margin-top: 24px; }
+  .notice { background: #fef3c7; border: 1px solid #fcd34d; border-radius: 8px; padding: 12px 16px; font-size: .9rem; margin-bottom: 16px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Zyramic OneDrive Transfer Status</h1>
+  <div class="sub">Live status of the AWS archive upload to the OneDrive <strong>AWS - SSI</strong> folder.</div>
+
+  <div class="notice">Uploads are currently in progress. This page is updated as files complete.</div>
+
+  <div class="card">
+    <h2>Overall Progress</h2>
+    <div class="bar-outer"><div class="bar-inner" style="width:5%">5%</div></div>
+    <div class="meta">Chunks are being uploaded in batches · Last updated 2026-10-14 08:35 UTC</div>
+  </div>
+
+  <div class="card">
+    <h2>Files</h2>
+    <div class="file-row"><span>factory-intro.zip <span style="color:#999;font-size:.8rem">115 MB</span></span><span class="badge active">Uploading</span></div>
+    <div class="file-row"><span>sote-reports2.zip <span style="color:#999;font-size:.8rem">116 MB</span></span><span class="badge active">Uploading</span></div>
+    <div class="file-row"><span>ssi-korea-factory.zip <span style="color:#999;font-size:.8rem">238 MB</span></span><span class="badge active">Uploading</span></div>
+    <div class="file-row"><span>ssiphotos.zip <span style="color:#999;font-size:.8rem">356 MB</span></span><span class="badge wait">Queued</span></div>
+    <div class="file-row"><span>diffuser-deposits.zip <span style="color:#999;font-size:.8rem">484 MB</span></span><span class="badge wait">Queued</span></div>
+    <div class="file-row"><span>ssiaeration-images.zip <span style="color:#999;font-size:.8rem">588 MB</span></span><span class="badge wait">Queued</span></div>
+    <div class="file-row"><span>ssivideo.zip <span style="color:#999;font-size:.8rem">766 MB</span></span><span class="badge wait">Queued</span></div>
+    <div class="file-row"><span>ssi-training.zip <span style="color:#999;font-size:.8rem">5.6 GB</span></span><span class="badge wait">Queued</span></div>
+  </div>
+
+  <div class="card">
+    <h2>Questions</h2>
+    <div class="faq-q">How do I rejoin the chunk files after downloading?</div>
+    <div class="faq-a">Download all <code>.part</code> files for a given zip, then run:<br><code>cat filename.zip.*.part &gt; filename.zip</code></div>
+    <div class="faq-q">How long will the transfer take?</div>
+    <div class="faq-a">Uploads are in progress now. Check the progress bar above for the latest status.</div>
+    <div class="faq-q">A file looks corrupted or is missing chunks. What do I do?</div>
+    <div class="faq-a">Submit a ticket below with the file name and what you see. It will be investigated promptly.</div>
+  </div>
+
+  <div class="card">
+    <h2>Report a Problem</h2>
+    <p style="font-size:.9rem;color:#555;margin-bottom:8px">Submit a ticket and it will be handled directly. You'll get a reply at the email you provide.</p>
+    <form action="https://formsubmit.co/zyramic@agentmail.to" method="POST">
+      <input type="hidden" name="_subject" value="OneDrive Transfer Ticket">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <label>Your name</label>
+      <input name="name" required maxlength="80">
+      <label>Your email</label>
+      <input name="email" type="email" required maxlength="120">
+      <label>Subject</label>
+      <input name="subject" required maxlength="140">
+      <label>Describe the problem</label>
+      <textarea name="message" required maxlength="2000"></textarea>
+      <button type="submit">Submit Ticket</button>
+    </form>
+  </div>
+
+  <div class="footer">Zyramic, Inc. · Temporary status page for the current transfer</div>
+</div>
+</body>
+</html>
